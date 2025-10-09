@@ -29,6 +29,15 @@ struct lista * lista_cria () {
     return l; 
 }
 
+/*
+  Retorna 1 se a lista está vazia e 0 caso contrário.
+*/
+int lista_vazia (struct lista *lista) {
+    if (lista -> ini == NULL)
+        return 1;
+    return 0;
+}
+
 /* Desaloca toda memoria da lista e faz lista receber NULL. */
 void lista_destroi (struct lista **lista){
     struct nodo *aux;
@@ -72,18 +81,28 @@ int lista_insere_inicio (struct lista *lista, int chave){
 int lista_insere_fim (struct lista *lista, int chave){
     struct nodo *n = malloc (sizeof(struct nodo));
     struct nodo *aux = lista -> ini;
-    int i;
 
     if (n == NULL)
         return 0;
 
+    /*testa se a lista ta vazia*/
+    if (lista_vazia(lista)) {
+        lista_insere_inicio(lista, chave);
+
+        free (n);
+        n = NULL;
+        
+        return 1;
+    }
+
     n -> chave = chave;
     n -> prox = NULL;
 
-    for (i = 1; i < lista -> tamanho; i++)
-        aux = aux -> prox; 
+    while (aux -> prox != NULL)
+        aux = aux -> prox;
 
     aux -> prox = n;
+
     lista -> tamanho++;
 
     return 1;
@@ -100,31 +119,34 @@ int lista_insere_ordenado (struct lista *lista, int chave) {
     if (n == NULL)
         return 0;
 
+    /*testa se a lista ta vazia*/
+    if (lista_vazia(lista)) {
+        lista_insere_inicio(lista, chave);
+
+        free (n);
+        n = NULL;
+
+        return 1;
+    }
+
     n -> chave = chave;
 
-    /* passa pelo vetor para encontrar a posicao certa do novo nodo,
-     * se a chave do nodo n for monor que a chave do primeiro nodo da lista 
-     * E se o aux nao apontar para o ultimo elemento */
-    if (lista -> ini -> chave < n -> chave)
+    /* percorre toda a lista se a nova chave for maior que a chave do primeiro elemento
+     * caso contrario, a nova chave eh inserida no começo */
+    if (lista -> ini -> chave < n -> chave) {
         while ((aux -> prox != NULL) && (aux -> prox -> chave < n -> chave))
             aux = aux -> prox;
-
-    /*insere o novo nodo na lista*/
-    n -> prox = aux -> prox;
-    aux -> prox = n;
+        /*insere o novo nodo na lista*/
+        n -> prox = aux -> prox;
+        aux -> prox = n;
+    } else {
+        n -> prox = lista -> ini;
+        lista -> ini = n;
+    }
 
     lista -> tamanho++;
 
     return 1;
-}
-
-/*
-  Retorna 1 se a lista está vazia e 0 caso contrário.
-*/
-int lista_vazia (struct lista *lista) {
-    if (lista -> ini == NULL)
-        return 1;
-    return 0;
 }
 
 /*
@@ -139,32 +161,97 @@ int lista_remove_inicio (struct lista *lista, int *chave) {
     struct nodo *aux = lista -> ini;
 
     lista -> ini = aux -> prox;
+    (*chave) = aux -> chave; /*variavel chave recebe o valor da chave do nodo a ser removido*/
+
     free (aux);
+
+    lista -> tamanho--;
+
+    return 1;
+}
+
+/*
+ * Remove o elemento do final da lista e o retorna
+ * no parametro chave. Nao confundir com o retorno da funcao.
+ * A funcao retorna 1 em caso de sucesso e 0 no caso da lista estar vazia.
+*/
+int lista_remove_fim (struct lista *lista, int *chave){
+    struct nodo *aux = lista -> ini;
+
+    if (lista_vazia(lista))
+        return 0;
+
+    while (aux -> prox != NULL)
+        aux = aux -> prox;
+    
+    (*chave) = aux -> chave; /* chave recebe o valor da chave do nodo a ser removido */
+
+    free (aux -> prox);
+    aux -> prox = NULL;
+
+    lista -> tamanho--;
+
+    return 1;
+}
+
+/*
+ * Remove o elemento chave da lista mantendo-a ordenada.
+ * A função considera que a cheve esta presente na lista, quem chama
+ * esta funcao deve garantir isso.
+ * A funcao retorna 1 em caso de sucesso e 0 no caso da lista estar vazia.
+*/
+int lista_remove_ordenado (struct lista *lista, int chave){
+    struct nodo *aux = lista -> ini;
+    struct nodo *aux2;
+
+    if (lista_vazia(lista))
+        return 0;
+
+    while ((aux -> prox != NULL) && (aux -> prox -> chave != chave))
+        aux = aux -> prox;
+
+    aux2 = aux -> prox;
+    aux -> prox = aux2 -> prox;
+
+    lista -> tamanho--;
+
+    free (aux2);
 
     return 1;
 }
 
 int main () {
-    struct lista *l ;
+    struct lista *l;
+  
     l = lista_cria();
+    int chave, i; 
+    struct nodo *aux;
 
-    int chave = 1; 
+    scanf ("%d", &chave);
+    while (chave != 0) {
+        lista_insere_ordenado (l, chave);
+        scanf ("%d", &chave);
+    }
 
-    if (lista_insere_inicio(l, chave))
-        printf("%d\n", l -> ini -> chave);
-    else
-        printf ("error\n");
+    aux = l -> ini;
 
-    if (lista_insere_fim(l, 7))
-        printf("%d\n", l -> ini -> prox -> chave);
-    else
-        printf ("error\n");
+    for (i = 1; i <= l -> tamanho; i++) {
+        printf ("%d ", aux -> chave);
+        aux = aux -> prox;
+    }
+    printf("\n");
+    
+    lista_remove_ordenado(l, 5);
 
-    if (lista_insere_ordenado(l, 9))
-        printf("%d\n", l -> ini -> prox -> prox -> chave);
-    else
-        printf ("error\n");
+    aux = l -> ini;
+
+    for (i = 1; i <= l -> tamanho; i++) {
+        printf ("%d ", aux -> chave);
+        aux = aux -> prox;
+    }
+    printf("\n");
 
     lista_destroi (&l);
+
     return 0;
 }

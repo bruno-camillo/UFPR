@@ -105,7 +105,23 @@ int lista_insere_ordenado (struct lista *lista, int chave) {
     return 1;
 }
 
-int lista_remove_inicio (struct lista *lista, int *chave){
+/*
+ * Remove o elemento do inicio da lista e o retorna
+ * no parametro chave. Nao confundir com o retorno da funcao.
+ * A funcao retorna 1 em caso de sucesso e 0 no caso da lista estar vazia.
+*/
+int lista_remove_inicio (struct lista *lista, int *chave) {
+    if ( lista_vazia(lista) )
+        return 0;
+
+    struct nodo *aux = lista -> ini;
+
+    lista -> ini = aux -> prox;
+    (*chave) = aux -> chave; //variavel chave recebe o valor do nodo a ser removido
+
+    free (aux);
+
+    return 1;
 }
 
 int lista_remove_fim (struct lista *lista, int *chave){
@@ -114,9 +130,11 @@ int lista_remove_fim (struct lista *lista, int *chave){
 int lista_remove_ordenado (struct lista *lista, int chave){
 }
 
-int lista_vazia (struct lista *lista){
+int lista_vazia (struct lista *lista) {
+    if (lista -> ini == NULL)
+        return 1;
+    return 0;
 }
-
 int lista_tamanho (struct lista *lista){
 }
 
