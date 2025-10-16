@@ -38,6 +38,29 @@ int lista_vazia (struct lista *lista) {
     return 0;
 }
 
+/*
+  Retorna o numero de elementos da lista
+*/
+int lista_tamanho (struct lista *lista) {
+    return lista -> tamanho;
+}
+
+/*
+  Retorna 1 se o elemento chave esta presente na lista,
+  caso contrário retorna 0.
+*/
+int lista_pertence (struct lista *lista, int chave) {
+    struct nodo *aux = lista -> ini;
+
+    while ((aux -> prox != NULL) && (aux -> chave != chave))
+        aux = aux -> prox;
+
+    if (aux -> chave == chave)
+        return 1;
+
+    return 0;
+}
+
 /* Desaloca toda memoria da lista e faz lista receber NULL. */
 void lista_destroi (struct lista **lista){
     struct nodo *aux;
@@ -155,7 +178,7 @@ int lista_insere_ordenado (struct lista *lista, int chave) {
  * A funcao retorna 1 em caso de sucesso e 0 no caso da lista estar vazia.
 */
 int lista_remove_inicio (struct lista *lista, int *chave) {
-    if ( lista_vazia(lista) )
+    if ((lista_vazia(lista)) || !(lista_pertence(lista, chave)))
         return 0;
 
     struct nodo *aux = lista -> ini;
@@ -178,7 +201,7 @@ int lista_remove_inicio (struct lista *lista, int *chave) {
 int lista_remove_fim (struct lista *lista, int *chave){
     struct nodo *aux = lista -> ini;
 
-    if (lista_vazia(lista))
+    if ((lista_vazia(lista)) || !(lista_pertence(lista, chave)))
         return 0;
 
     while (aux -> prox != NULL)
@@ -204,7 +227,7 @@ int lista_remove_ordenado (struct lista *lista, int chave){
     struct nodo *aux = lista -> ini;
     struct nodo *aux2;
 
-    if (lista_vazia(lista))
+    if ((lista_vazia(lista)) || !(lista_pertence(lista, chave)))
         return 0;
 
     while ((aux -> prox != NULL) && (aux -> prox -> chave != chave))
@@ -217,6 +240,29 @@ int lista_remove_ordenado (struct lista *lista, int chave){
 
     free (aux2);
 
+    return 1;
+}
+
+/*
+ * Inicializa ptr usado na funcao incrementa_iterador.
+ * A funcao main deve garantir que a lista nao eh vazia.
+*/
+void lista_inicia_iterador (struct lista *lista) {
+    lista -> ptr = lista -> ini;
+}
+
+/*
+ * Devolve no parametro *chave o elemento apontado e incrementa o iterador.
+ * A funcao retorna 0 caso o iterador ultrapasse o ultimo elemento, ou retorna
+ * 1 caso o iterador aponte para um elemento valido (dentro da lista).
+*/
+int lista_incrementa_iterador (struct lista *lista, int *chave) {
+    (*chave) = lista -> ptr -> chave;
+
+    lista -> ptr = lista -> ptr -> prox;
+
+    if (lista -> ptr == NULL)
+        return 0;
     return 1;
 }
 
@@ -241,8 +287,9 @@ int main () {
     }
     printf("\n");
     
-    lista_remove_ordenado(l, 5);
+    lista_remove_ordenado(l, 4);
 
+    /*for imprime a lista*/
     aux = l -> ini;
 
     for (i = 1; i <= l -> tamanho; i++) {
@@ -250,6 +297,11 @@ int main () {
         aux = aux -> prox;
     }
     printf("\n");
+
+    if (lista_pertence(l, 5))
+        printf ("5 pertence à lista\n");
+    else
+        printf ("5 nao pertence a lista\n");
 
     lista_destroi (&l);
 

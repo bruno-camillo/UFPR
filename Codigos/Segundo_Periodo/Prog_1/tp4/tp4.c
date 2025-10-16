@@ -74,19 +74,22 @@ void teste_remove_inicio (struct lista *l)
     int chave;
 
     /* remove todo mundo */
-    while (! lista_vazia (l))
+    while (! lista_vazia (l)){
+       
         if (lista_remove_inicio (l, &chave))
             imprimir_lista (l);
+    }
 }
 
 void teste_remove_fim (struct lista *l)
 {
+    
     int chave;
-
     /* remove todo mundo */
-    while (! lista_vazia (l))
+    while (! lista_vazia (l)){
         if (lista_remove_fim (l, &chave))
             imprimir_lista (l);
+    }
 }
 
 void teste_insere_ordenado (struct lista *l)
@@ -152,6 +155,7 @@ int main (void)
     teste_insere_inicio (l, MAX); 
     printf ("\n\n");
 
+    
     printf ("Teste 4: esvaziar a lista retirando do inicio:\n");
     printf ("Esperado: tem que imprimir a lista 5 vezes, a cada vez sem o primeiro elemento\n");
     printf ("          Ao final, mostrar a mensagem 'lista vazia'\n");
