@@ -62,6 +62,26 @@
     <a name="circuit" val="BancoDeRegistradores"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
+    <appear>
+      <rect height="22" stroke="#000000" width="119" x="51" y="28"/>
+      <rect fill="none" height="171" stroke="#000000" width="119" x="51" y="50"/>
+      <text dominant-baseline="central" font-family="SansSerif" font-size="12" font-weight="bold" text-anchor="middle" x="69" y="69">RS1</text>
+      <text dominant-baseline="central" font-family="SansSerif" font-size="12" font-weight="bold" text-anchor="middle" x="70" y="109">RS2</text>
+      <text dominant-baseline="central" font-family="SansSerif" font-size="12" font-weight="bold" text-anchor="middle" x="67" y="148">RD</text>
+      <text dominant-baseline="central" font-family="SansSerif" font-size="12" font-weight="bold" text-anchor="middle" x="109" y="203">W</text>
+      <text dominant-baseline="central" font-family="SansSerif" font-size="12" font-weight="bold" text-anchor="middle" x="63" y="189">D</text>
+      <text dominant-baseline="central" font-family="SansSerif" font-size="12" font-weight="bold" text-anchor="middle" x="157" y="68">A</text>
+      <text dominant-baseline="central" font-family="SansSerif" font-size="12" font-weight="bold" text-anchor="middle" x="157" y="119">B</text>
+      <text dominant-baseline="central" fill="#ffffff" font-family="SansSerif" font-size="10" text-anchor="middle" x="111" y="39">Banco de Registradores</text>
+      <circ-anchor facing="north" x="170" y="150"/>
+      <circ-port dir="in" pin="1280,1480" x="110" y="220"/>
+      <circ-port dir="in" pin="1350,1620" x="50" y="150"/>
+      <circ-port dir="in" pin="1410,1090" x="50" y="110"/>
+      <circ-port dir="in" pin="1410,590" x="50" y="70"/>
+      <circ-port dir="in" pin="280,1440" x="50" y="190"/>
+      <circ-port dir="out" pin="1550,490" x="170" y="70"/>
+      <circ-port dir="out" pin="1550,990" x="170" y="120"/>
+    </appear>
     <comp lib="0" loc="(1270,1000)" name="Tunnel">
       <a name="facing" val="east"/>
       <a name="label" val="a2"/>
@@ -896,5 +916,24 @@
     <wire from="(920,770)" to="(920,820)"/>
     <wire from="(920,820)" to="(950,820)"/>
     <wire from="(920,980)" to="(920,1030)"/>
+  </circuit>
+  <circuit name="ULA">
+    <a name="appearance" val="logisim_evolution"/>
+    <a name="circuit" val="ULA"/>
+    <a name="circuitnamedboxfixedsize" val="true"/>
+    <a name="simulationFrequency" val="1.0"/>
+    <comp lib="1" loc="(480,270)" name="AND Gate"/>
+    <comp lib="1" loc="(480,370)" name="OR Gate"/>
+    <comp lib="1" loc="(490,470)" name="XOR Gate"/>
+    <comp lib="2" loc="(810,400)" name="Multiplexer">
+      <a name="select" val="4"/>
+    </comp>
+    <comp lib="3" loc="(470,190)" name="Comparator"/>
+    <comp lib="3" loc="(480,600)" name="Adder"/>
+    <comp lib="3" loc="(480,710)" name="Subtractor"/>
+    <comp lib="3" loc="(480,800)" name="Shifter"/>
+    <comp lib="3" loc="(480,880)" name="Shifter">
+      <a name="shift" val="lr"/>
+    </comp>
   </circuit>
 </project>
