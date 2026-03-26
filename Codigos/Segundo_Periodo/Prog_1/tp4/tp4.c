@@ -85,6 +85,10 @@ void teste_remove_fim (struct lista *l)
 {
     
     int chave;
+<<<<<<< HEAD
+=======
+
+>>>>>>> ccaaa3c8dbfee2407cd599582fffe1549f0eba1c
     /* remove todo mundo */
     while (! lista_vazia (l)){
         if (lista_remove_fim (l, &chave))
