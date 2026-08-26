@@ -1,0 +1,22 @@
+Autoria:
+- Nome: Bruno Bertussi Camillo
+- GRR20252947
+
+Lista de Arquivos:
+- main.c: Ponto de entrada do sistema que executa as operações cli.
+- gbv.h: Assinatura das funções do gerenciador de biblioteca virtual.
+- gbv.c: Implementação das funções centrais (criação, adição, remoção, listagem e ordenação).
+- util.h / util.c: Funções utilitárias de auxílio (formatação de datas).
+- Makefile: Arquivo de compilação automática das dependências.
+
+Dificuldades Enfrentadas + Bugs Conhecidos:
+- Uma das principais dificuldades foi lidar com a limitação da API durante a operação de remoção lógica ("-r"). 
+A função 'gbv_remove' recebe o cabeçalho Library da memória e o nome do documento, mas não recebia a string do 
+arquivo container (.gbv) para gravar a mudança. Resolvi isso mantendo o nome do arquivo container localmente
+armazenado de forma estática no módulo gbv.c durante a abertura.
+
+- Manter o limite restrito de 2 buffers de memória simultaneamente exigiu cuidado extra na hora de fazer a transição 
+de arquivos de leitura para o arquivo mestre dentro de 'gbv_add', além do gerenciamento dinâmico e relocação segura 
+do vetor de diretório do arquivo.
+
+- A função de visualização dentro do arquivo não esta passando por todos os documentos corretamente, a principio.

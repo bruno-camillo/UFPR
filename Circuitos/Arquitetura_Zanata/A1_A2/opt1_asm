@@ -1,0 +1,129 @@
+xor r1, r1
+xor r2, r2
+if_1:
+xor r0, r0
+addi 10
+sub r0, r1
+xor r3, r3
+addi 15
+addi 15
+addi 15
+addi 6
+brzr r0, r3
+xor r0, r0
+addi 15
+addi 15
+addi 15
+addi 15
+addi 15
+addi 15
+addi 15
+addi 15
+addi 10
+add r0, r1
+st r2, r0
+xor r0, r0
+addi 1
+xor r3, r3
+add r3, r2
+add r3, r0
+xor r0, r0
+addi 15
+addi 15
+addi 15
+addi 15
+addi 15
+addi 15
+addi 15
+addi 15
+addi 15
+addi 5
+add r0, r1
+st r3, r0
+xor r0, r0
+addi 2
+add r2, r0
+xor r0, r0
+addi 1
+add r1, r0
+xor r0, r0
+xor r3, r3
+addi 2
+brzr r0, r3
+fim_if_1:
+xor r1, r1
+if_2:
+xor r0, r0
+addi 10
+sub r0, r1
+xor r3, r3
+addi 15
+addi 15
+addi 15
+addi 15
+addi 15
+addi 15
+addi 15
+addi 9
+brzr r0, r3
+xor r0, r0
+addi 15
+addi 15
+addi 15
+addi 15
+addi 15
+addi 15
+addi 15
+addi 15
+addi 10
+add r0, r1
+ld r2, r0
+xor r0, r0
+addi 15
+addi 15
+addi 15
+addi 15
+addi 15
+addi 15
+addi 15
+addi 15
+addi 15
+addi 5
+add r0, r1
+ld r3, r0
+add r2, r3
+xor r0, r0
+addi 15
+addi 15
+addi 15
+addi 15
+addi 15
+addi 15
+addi 15
+addi 15
+addi 15
+addi 15
+add r0, r1
+st r2, r0
+xor r0, r0
+addi 1
+add r1, r0
+xor r0, r0
+xor r3, r3
+addi 15
+addi 15
+addi 15
+addi 7
+brzr r0, r3
+fim_if_2:
+xor r0, r0
+xor r3, r3
+addi 15
+addi 15
+addi 15
+addi 15
+addi 15
+addi 15
+addi 15
+addi 9
+brzr r0, r3

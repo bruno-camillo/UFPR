@@ -1,0 +1,38 @@
+sub r1, r1 ; r1 (i) = 0 sub r2, r2 ; r2 (k) = 0
+movl 12 sub r3, r3 sub r0, r0
+add r3 r0
+movh 1 ; sub r3, r1 ; r3 = 12 - i (inicio do loop 1)
+movl 2 ; r0 = [18]
+movh 2 ; brzr r3, r0
+movl 6 ; &A[0] = [38]
+add r0, r1 ; r0 = 38 + i = &A[i]
+st r1, r0 ; A[i] = i
+movh 1
+movl 4 ; r0 = 20 add r2, r1 ; r2 = i
+movh 3 ; add r2, r0 ; r2 = i + 20
+movl 2; &B[0]
+add r0, r1 ; r0 = 50 + i = &B[i]
+st r2, r0 ; B[i] = k sub r0, r0
+movl 1
+movl 6 add r1, r0 ; i++ sub r2, r2
+jr r0; volta pro inicio do loop
+sub r1, r1
+movl 12 sub r3, r3 sub r0, r0 ; inicio do loop 2
+sub r0, r1
+movh 2 add r3, r0 ; r3 = 12 - i
+movl 5 (Endereço do ebreak)
+movh 2 ; brzr r3, r0
+movl 6 ; &A[0]
+add r0, r1 ; r0 = 38 + i = &A[i]
+ld r2, r0 ; r2 = M[&A[i]]
+movh 3 ;
+movl 2; &B[0]
+ld r3, r0 ; r3 = M[&B[i]]
+movh 3 ;
+movl 14; add r2, r3 ; r2 = A[i] + B[i]
+st r2, r0 sub r0, r0
+movl 1
+movh 1 add r1, r0 ; i++
+movl 3
+jr r0; volta para o inicio do loop 2
+ji 0 ; equivalente ao ebreak 

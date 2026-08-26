@@ -1,0 +1,52 @@
+nop r2, r2 | nop r2,r2 | sub r0, r0 | sub r1, r1
+movl 12 | nop r1, r1 | sub r2, r2 | sub r3, r3
+nop r1, r1 | nop r1, r1 | nop r1,r1 | add r3 r0
+movh 1 | nop r2, r2 | nop r2,r2 | nop r2,r2 ; INICIO LOOP
+movl 2 | nop r1, r1 | nop r1, r1 | sub r2 ,r2   
+movh 2 | brzr r3, r0 | nop r1, r1 | nop r1 ,r1
+movl 7 | nop r3, r3 | nop r3 ,r3 | nop r3, r3
+nop r2, r2 | nop r2,r2 | nop r2, r2 | add r0, r1 
+st r1, r0 | nop r2, r2 | nop r2, r2 | nop r2, r2
+movh 1 | nop r1, r1 | nop r1, r1 | nop r1, r1
+movl 4 | nop r3, r3 | nop r3, r3 | add r2, r1
+movh 3 | nop r1, r1 | nop r1, r1 | add r2, r0
+movl 3 | nop r1, r1 | nop r1, r1 | nop r1, r1
+nop r3,r3 | nop r3, r3 | nop r3, r3 | add r0, r1 
+st r2, r0 | nop r1, r1 | nop r1, r1 | sub r0, r0
+movl 1 | nop r1, r1 | nop r1, r1 | nop r1, r1
+movl 3 | nop r2, r2 | sub r3, r0 | add r1, r0 
+nop r1, r1 | jr r0 | nop r1, r1 | nop r1, r1 ; PRIMEIRO LOOP FUNCIONANDO
+movh 0 | nop r2, r2 | nop r2, r2| sub r1, r1 
+movl 12 | nop r2, r2 | NOP R2, R2 | nop r2, r2 ; INICIO SEGUNDO LOOP
+nop r2, r2 | nop r2, r2 | nop r2, r2 | sub r0, r1
+movh 2 | nop r2 ,r2 | nop r2, r2 | add r3, r0 
+movl 6 | nop r1, r1 | nop r1, r1 | nop r1, r1
+nop r1, r1 | brzr r3, r0 | nop r1, r1 | nop r1, r1  
+movl 7 | nop r1, r1 | nop r1, r1 | nop r1, r1
+nop r2,r2 | nop r2, r2 | nop r2, r2 | add r0, r1 
+ld r2, r0 | nop r1, r1 | nop r1, r1 | nop r1, r1
+movh 3 | nop r1, r1 | nop r1, r1 | nop r1, r1
+movl 3 | nop r1, r1 | nop r1, r1 | nop r1, r1
+nop r1, r1 | nop r1, r1 | nop r1, r1 | add r0, r1
+ld r3, r0 | nop r1, r1 | nop r1, r1 | nop r1, r1 
+movl 15 | nop r1, r1 | nop r1, r1 | add r2, r3
+nop r3, r3 | nop r3, r3 | nop r3, r3 | add r0, r1
+st r2, r0 | nop r1, r1 | nop r1, r1 | sub r0, r0
+movl 1 | nop r1, r1 | nop r1, r1 | nop r1, r1
+movh 1 | nop r2, r2 | nop r2, r2 | add r1, r0 
+movl 3 | nop r1, r1 | nop r1, r1 | nop r1, r1
+movh 0 | jr r0 | nop r1, r1 | sub r3, r3
+nop r1,r1 | ji 0 | nop r1, r1 | nop r1, r1
+
+
+
+
+
+
+
+
+
+
+
+
+
