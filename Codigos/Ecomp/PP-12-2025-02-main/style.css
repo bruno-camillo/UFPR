@@ -1,0 +1,9 @@
+.custom-footer {
+  background:
+    url('./imagens/Efeito\ de\ Fundo.png'),           /* imagem por cima */
+    linear-gradient(to right, #00ba8b, #003F6D);  /* gradiente por baixo */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+

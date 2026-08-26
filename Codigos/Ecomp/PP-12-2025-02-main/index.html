@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Projeto Paralelo</title>
+		<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+		<link rel="stylesheet" href="style.css" />
+		<link
+			rel="shortcut icon"
+			type="imagex/png"
+			href="./assets/ecomp-icon.png"
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+		<style>
+			.work-sans {
+      			font-family: 'Work Sans', sans-serif;
+    		}
+		</style>
+		<style>
+  			.font-poppins {
+    			font-family: 'Poppins', sans-serif;
+  			}
+		</style>
+	</head>
+	<body>
+		<!-- MVV -->
+
+		<!-- linha de cima -->
+
+		<div class="bg-linear-to-r from-[#F6CF6E] to-[#FFA081] h-10"></div>
+		<!-- conteudo do meio -->
+				
+		<div class="bg-[#424242] flex flex-col text-center justify-center items-center gap-20 p-20 md:flex-row">
+
+			<div class="flex-col grid auto-cols-auto justify-items-center">
+						<div class="justify-self-center">
+							<img src="imagens/Globe.png" alt="globo" class="w-40 md:w-50 h-auto">
+						</div>
+						<h1 class="font-bold text-white text-3xl md:p-3 md:text-5xl ">
+							Missão
+						</h1>
+						<p class="font-bold text-white text-lg w-2xs md:text-xl">
+							Ser a diferença desenvolvendo experiências incríveis.
+						</p>	
+			</div>
+
+			<div class="flex-col grid auto-cols-auto justify-items-center">
+							<div class="justify-self-center">
+								<img src="imagens/Eye.png" alt="olho" class="w-40 md:w-50 h-auto">
+							</div>
+							<h1 class="font-bold text-white text-3xl md:p-3 md:text-5xl ">
+							Visão
+							</h1>
+							<p class="font-bold text-white text-lg md:w-100 md:text-xl">
+								Ser formada por devs comprometidos em constante evolução e em sintonia com o mercado.
+							</p>
+			</div>
+
+			<div class="flex-col grid auto-cols-auto justify-items-center">
+							<div class="justify-self-center">
+								<img src="imagens/Star.png" alt="estrela" class="w-40 md:w-50 h-auto">
+							</div>
+							
+							<h1 class="font-bold text-white text-3xl md:p-3 md:text-5xl ">
+							Valores
+							</h1>
+							<p class="font-bold text-white text-lg w-2xs md:text-xl"> 
+								Resiliência, Altruísmo, Inovação e Diversidade.
+							</p>
+			</div>
+		</div>
+		<!-- linha de baixo -->
+		<div class="bg-linear-to-r from-[#F6CF6E] to-[#FFA081] h-10"></div>
+
+		<!-- Formulario -->
+
+		<div class="">
+			<h1 class="font-bold font-poppins text-2xl md:text-5xl text-center m-5 md:p-15">Entre em contato conosco!</h1>
+			<div class="grid grid-cols-12 grid-rows-4 p-5 md:p-0">
+				<div class="col-span-2 row-span-3 col-start-1 row-start-3 hidden md:block">
+					<img src="imagens/Pinguim.png" alt="pinguim">
+				</div>
+				<div class="col-span-12 md:col-span-9 row-span-4 col-start-1 md:col-start-3 row-start-1">
+					<form action="" class="flex flex-col gap-2">
+					<label for="nome" class="font-normal">Nome*</label>
+					<input 
+						class="border-gray-400 border-2 rounded-md p-2"
+						type="text" 
+						id="nome" 
+						name="nome"
+						placeholder="Como você se chama?">
+
+					<label for="telefone" class="font-normal">Telefone*</label>
+					<input 
+						class="border-gray-400 border-2 rounded-md p-2"
+						type="text" 
+						id="telefone" 
+						name="telefone"
+						placeholder="Qual seu número de telefone?">
+
+					<label for="email" class="font-normal">Email*</label>
+					<input 
+						class="border-gray-400 border-2 rounded-md p-2"
+						type="email" 
+						id="email" 
+						name="email"
+						placeholder="Qual seu E-mail?">
+
+					<label for="mensagem" class="font-normal">Mensagem:</label>
+					<textarea 
+						class="border-gray-400 border-2 rounded-md p-2"
+						id="mensagem" 
+						name="mensagem"
+						placeholder="Fala aí!"></textarea>
+
+					<input class="bg-[#00BA8B] rounded-lg text-white py-2 px-4 font-bold cursor-pointer" type="submit" value="Enviar">
+					</form>
+				</div>
+			</div>
+    
+		</div>
+
+		<!-- Footer -->
+		<footer class="custom-footer grid grid-cols-1 md:grid-cols-3 gap-12 mx-auto p-8 bg-linear-to-r from-[#00ba8b] to-[#003F6D]">
+			
+			<!-- Coluna 1: Redes sociais -->
+			<div class="flex flex-row justify-center gap-5 md:flex-col">
+				<div class="flex items-center gap-4">
+					<img src="./imagens/Linkedin.png" alt="logo linkedin" class="h-[64] w-auto" />
+					<p class="text-2xl text-white work-sans font-semibold hidden md:block">/ecomp-ufpr</p>
+				</div>
+
+				<div class="flex items-center gap-4">
+					<img src="./imagens/Facebook.png" alt="logo facebook" class="h-[64] w-auto" />
+					<p class="text-2xl text-white work-sans font-semibold hidden md:block">/ecomp-ufpr</p>
+				</div>
+
+				<div class="flex items-center gap-4">
+					<img src="./imagens/Instagram.png" alt="logo insta" class="h-[64] w-auto" />
+					<p class="text-2xl text-white work-sans font-semibold hidden md:block">/ecomp-ufpr</p>
+				</div>
+			</div>
+
+			<!-- Coluna 2: Logo -->
+			<div class="md:justify-self-center hidden md:block">
+				<img src="./imagens/icon_white_1600.png" alt="logo ecomp" class="h-[169] w-[252]" />
+			</div>
+
+			<!-- Coluna 3: Contato -->
+			<div class="flex flex-col md:grid grid-flow-row flex justify-end gap-1" style="grid-auto-columns: 330px;">
+				<p class="text-xs md:text-2xl text-white work-sans font-semibold">Av. Cel. Francisco Heráclito dos Santos, 210.</p>
+				<p class=" text-xs md:text-2xl text-white work-sans font-semibold">Prédio de Administração, 5º andar, Curitiba/PR.</p>
+				<p class="text-xs md:text-2xl text-white work-sans font-semibold">comunicacao@ecomp.co</p>
+			</div>
+			<div class="flex items-center justify-center block md:hidden">
+				<img class="h-20" src="./imagens/icon_white_1600.png" alt="logo ecomp"/>
+			</div>
+		</footer>
+
+	</body>
+</html>
