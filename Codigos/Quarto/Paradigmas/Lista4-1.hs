@@ -1,4 +1,4 @@
-module Lista4 where
+module Lista4-1 where
 
 type Tupla = (String, String, Char)
 
@@ -58,3 +58,22 @@ cont t g = aux 1 t g
             
         titulo x = secEle(base(x)) == t
         genero x = tercEle(base(x)) == g
+
+type Nome = String
+type Titulo = String
+type Genero = Char
+type Pesquisador = (Nome, Titulo, Genero)
+type Grupo = [Pesquisador]
+
+-- Função recursiva que cria uma lista de pesquisadores da funçao base
+pesquisadores :: Grupo
+pesquisadores = aux 1
+    where 
+        aux x 
+            | x > 5 = []
+            | otherwise = base x : aux (x + 1)
+
+-- Função que gera uma lista com os nomes dos doutores da função base
+geraDoc :: Grupo -> [Nome]
+geraDoc lista = [n | (n, t, g) <- lista, t == "doutor"]
+
